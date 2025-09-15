@@ -49,7 +49,7 @@ void BankAccount::withdraw(double withdrawAmount) {
     }
     
     balance -= withdrawAmount; 
-    std::cout << "Withdrawal of " << withdrawAmount << " successful." << std::endl;
+    std::cout << "--Withdrawal of $" << withdrawAmount << " successful." << std::endl;
 }
 // --- accessors
 std::string BankAccount::getAccountNumber() const { return accountNumber; }
@@ -100,7 +100,7 @@ void createAccount(std::vector<BankAccount> &Bank, bool isLogged) {
 
 void selectAccount(std::vector<BankAccount> &Bank, BankAccount *&currentUser, bool &isLogged) { 
     if (isLogged) {
-        std::cout << "Already logged in. Log out if you wish to switch accounts." << std::endl;
+        std::cout << "--Already logged in. Log out if you wish to switch accounts." << std::endl;
         return;
     }
     
@@ -144,7 +144,7 @@ void makeDeposit(BankAccount *&currentUser, bool isLogged) {
         }
         
         currentUser->deposit(depositInp);
-        std::cout << "--Deposit of " << depositInp << " successful." << std::endl;
+        std::cout << "--Deposit of $" << depositInp << " successful." << std::endl;
     } else {
         std::cout << "--You are not logged in!" << std::endl;
     }
@@ -167,7 +167,7 @@ void makeWithdrawal(BankAccount *&currentUser, bool isLogged) {
             std::cout << "--Invalid input. Not a number. Try again." << std::endl;
             return;
     }
-        
+    
     currentUser->withdraw(withdrawInp);
 }
 
@@ -177,12 +177,12 @@ void printUserBalance(const BankAccount *currentUser, bool isLogged) {
         return;
     }
     
-    std::cout << "Balance: " << currentUser->getBalance() << std::endl;
+    std::cout << "Balance: $" << currentUser->getBalance() << std::endl;
 }
 
 void printAllUsers(const std::vector<BankAccount> &Bank) { 
     if (Bank.size() == 0) {
-        std::cout << "No accounts in this bank" << std::endl;
+        std::cout << "--No accounts in this bank" << std::endl;
         return ;
     }
     
