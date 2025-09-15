@@ -137,15 +137,14 @@ void makeDeposit(BankAccount *&currentUser, bool isLogged) {
     if (isLogged) {
         double depositInp;
         std::cout << "--Amount: " << std::endl;
-        // don't forget to VALIDATE INPUT HERE 
         std::cin >> depositInp;
         
         if (std::cin.fail()) {
             std::cin.clear(); // clear the error flags  
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             std::cout << "--Invalid input. Not a number. Try again." << std::endl;
-        return;
-    }
+            return;
+        }
         
         currentUser->deposit(depositInp);
         std::cout << "--Deposit of " << depositInp << " successful." << std::endl;
@@ -163,9 +162,15 @@ void makeWithdrawal(BankAccount *&currentUser, bool isLogged) {
     double withdrawInp;
     
     std::cout << "--Amount: " << std::endl;
-    // VALIDATE INPUT HERE
     std::cin >> withdrawInp ;
     
+    if (std::cin.fail()) {
+            std::cin.clear(); // clear the error flags  
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "--Invalid input. Not a number. Try again." << std::endl;
+            return;
+    }
+        
     currentUser->withdraw(withdrawInp);
 }
 
@@ -180,7 +185,7 @@ void printUserBalance(const BankAccount *currentUser, bool isLogged) {
     
 }
 
-void printAllUsers(const std::vector<BankAccount> &Bank) { // don't copy the vector lol
+void printAllUsers(const std::vector<BankAccount> &Bank) { 
     if (Bank.size() == 0) {
         std::cout << "No accounts in this bank" << std::endl;
         return ;
