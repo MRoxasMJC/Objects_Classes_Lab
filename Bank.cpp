@@ -63,8 +63,6 @@ void testBankAccountClass() {
     // BankAccount Ning("Ning", 500); 
     // BankAccount Ning("Ning"); // exclude the second parameter (balance)
     
-    std::cout << std::endl;
-    
     Melvino.setAccountHolderName("Melvino Roxas");
     std::cout << "account name: " << Melvino.getAccountHolderName() << std::endl;
     std::cout << "account number: " << Melvino.getAccountNumber() << std::endl;
@@ -84,7 +82,6 @@ void createAccount(std::vector<BankAccount> &Bank, bool isLogged) {
         std::cout << "Enter New User Name: " << std::endl;
         std::getline(std::cin, nameInp);
         std::cout << "--Account Creation Successful." << std::endl;
-        
         
         // validate input
         if (std::cin.fail()) {
@@ -175,14 +172,12 @@ void makeWithdrawal(BankAccount *&currentUser, bool isLogged) {
 }
 
 void printUserBalance(const BankAccount *currentUser, bool isLogged) {
-    
     if (!isLogged) {
-        std::cout << "You are not logged in!" << std::endl;
+        std::cout << "--You are not logged in!" << std::endl;
         return;
     }
     
     std::cout << "Balance: " << currentUser->getBalance() << std::endl;
-    
 }
 
 void printAllUsers(const std::vector<BankAccount> &Bank) { 
@@ -237,7 +232,6 @@ int main() {
     bool isLogged = false; 
     
     do {
-        
        printMenuChoices(currentUser, isLogged);
         choice = getMenuChoice(choice);
         
